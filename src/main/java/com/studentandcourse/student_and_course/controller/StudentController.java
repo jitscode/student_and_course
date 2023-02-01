@@ -2,7 +2,9 @@ package com.studentandcourse.student_and_course.controller;
 
 import com.studentandcourse.student_and_course.entity.Student;
 import com.studentandcourse.student_and_course.services.StudentServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +15,7 @@ public class StudentController {
     private StudentServices services;
 
     @PostMapping("/addstudent")
-    public Student addStudent(@RequestBody Student student){
+    public Student addStudent(@Valid @RequestBody Student student){
         return services.saveStudent(student);
     }
     @GetMapping("student/{id}")
